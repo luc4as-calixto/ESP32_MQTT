@@ -9,17 +9,17 @@ const String PSWD = "262007calixto";
 // RSSI = Intesidade do sinal
 
 void scanLocalNetworks();
-void conexaoWiFi();
+void connectToWiFi();
 
 void setup() {
   Serial.begin(115200);
   scanLocalNetworks();
-  conexaoWiFi();
+  connectToWiFi();
 }
 
 void loop() {
   if (WiFi.status() != WL_CONNECTED){
-    conexaoWiFi();
+    connectToWiFi();
   } 
   delay(2000); 
 }
@@ -38,7 +38,7 @@ void scanLocalNetworks() {
   }
 }
 
-void conexaoWiFi() {
+void connectToWiFi() {
   Serial.println("\nIniciando conexão com rede WiFi");
   WiFi.begin(SSID, PSWD);
   while (WiFi.status() != WL_CONNECTED) {
