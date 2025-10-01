@@ -1,25 +1,27 @@
 #include <WiFi.h>
-const String SSID = "iPhone";
-const String PSWD = "iot_sul_123";
+// const String SSID = "iPhone";
+// const String PSWD = "iot_sul_123";
+
+const String SSID = "Redmi 8 do lucas";
+const String PSWD = "262007calixto";
 
 // SSID = NOME
 // RSSI = Intesidade do sinal
 
 void scanLocalNetworks();
+void conexaoWiFi();
 
 void setup() {
   Serial.begin(115200);
   scanLocalNetworks();
-  Serial.println("Iniciando conexão com rede WiFi");
-  WiFi.begin(SSID, PSWD);
-  while(WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(200);
-  }
-  Serial.print("\nConectado!");
+  conexaoWiFi();
 }
 
 void loop() {
+  if (WiFi.status() != WL_CONNECTED){
+    conexaoWiFi();
+  } 
+  delay(2000); 
 }
 
 void scanLocalNetworks() {
@@ -34,4 +36,14 @@ void scanLocalNetworks() {
       Serial.printf("%d - %s | %d db\n", net, WiFi.SSID(net), WiFi.RSSI(net));
     }
   }
+}
+
+void conexaoWiFi() {
+  Serial.println("\nIniciando conexão com rede WiFi");
+  WiFi.begin(SSID, PSWD);
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(200);
+  }
+  Serial.print("\nConectado!");
 }
