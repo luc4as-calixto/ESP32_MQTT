@@ -21,6 +21,7 @@ void setup() {
   Serial.println("\nConectando ao broker");
   mqttClient.setServer(brokerUrl.c_str(), port);
   String userId = "ESP-CALIXTO";
+  userId += String(random(0xfff), HEX);
   mqttClient.connect(userId.c_str());
   while (!mqttClient.connected()) {
     Serial.println("Erro de conexão");
