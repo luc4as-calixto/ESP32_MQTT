@@ -1,9 +1,6 @@
 #include <WiFi.h>
-// const String SSID = "iPhone";
-// const String PSWD = "iot_sul_123";
-
-const String SSID = "Redmi 8 do lucas";
-const String PSWD = "262007calixto";
+const String SSID = "iPhone";
+const String PSWD = "iot_sul_123";
 
 // SSID = NOME
 // RSSI = Intesidade do sinal
